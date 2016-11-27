@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -x
+
+
+cd $OPENSHIFT_REPO_DIR
+
+mkdir $OPENSHIFT_REPO_DIR/src/env/resources/openshift/
+
+echo "mongo.host=$OPENSHIFT_MONGODB_DB_HOST" > $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "mongo.port=$OPENSHIFT_MONGODB_DB_PORT" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "mongo.account=$OPENSHIFT_MONGODB_DB_USERNAME" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "mongo.password=$OPENSHIFT_MONGODB_DB_PASSWORD" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "mongo.dbname=deckbuilder" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "allow.debug=false" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "server.port=$OPENSHIFT_DIY_PORT" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+echo "server.address=$OPENSHIFT_DIY_IP" >> $OPENSHIFT_REPO_DIR/src/env/resources/openshift/application.properties
+
+echo "org.gradle.parallel=false" > $OPENSHIFT_REPO_DIR/gradle.properties
+echo "org.gradle.daemon=false" >> $OPENSHIFT_REPO_DIR/gradle.properties

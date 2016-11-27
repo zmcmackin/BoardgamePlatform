@@ -1,0 +1,14 @@
+**/bin/
+**/build/
+
+**/.classpath
+**/.settings
+**/.project
+
+**/.settings/
+**/.gradle/
+**/target/
+
+## Contaners
+/.openshift
+/build/

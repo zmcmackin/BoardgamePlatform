@@ -1,0 +1,2 @@
+Closure cl = { task -> println "I'm $task.project.name" }
+task('hello').doLast(cl)

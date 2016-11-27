@@ -1,0 +1,3 @@
+//create default user
+use deckBuilder
+db.createUser({user:"deckBuilder", pwd:"game", roles: [{role:"readWrite", db:"deckBuilder"}] })
