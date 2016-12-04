@@ -12,3 +12,4 @@
 ## Contaners
 /.openshift
 /build/
+/bin/
