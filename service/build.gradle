@@ -44,7 +44,7 @@ dependencies {
 sourceSets {
 	main {
 		java {
-			srcDirs = []
+			srcDirs = ["src/main/java"]
 		}
 		resources {
 			srcDirs = ["/common/src/env/resources/$__env"]
