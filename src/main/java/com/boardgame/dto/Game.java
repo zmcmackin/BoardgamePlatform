@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.boardgame.bo.events.GameEvent;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,6 +22,12 @@ public class Game {
 	public List<String> user_ids;
 
 	public Map<GameObjectTypes, GameObject> gameObjects = new HashMap<>();
+
+	@JsonIgnore
+	public Map<String, Object> rules;
+
+	@JsonIgnore
+	public List<GameEvent> gameEventHistory;
 
 	public Game() {
 	}

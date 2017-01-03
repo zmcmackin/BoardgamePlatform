@@ -13,4 +13,11 @@ public abstract class GameObjectWithTraits extends GameObject {
     public void setTraits(Map<String, Object> traits) {
         this.traits = traits;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "traits=" + traits +
+                "} ";
+    }
 }
