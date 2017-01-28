@@ -1,11 +1,12 @@
 package com.boardgame.bo.board;
 
+import com.boardgame.bo.GameObject;
 import org.springframework.data.annotation.Transient;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Level {
+public class Level extends GameObject {
 
     @Transient
     Integer level;

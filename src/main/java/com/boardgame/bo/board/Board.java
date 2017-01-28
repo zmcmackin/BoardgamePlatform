@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.boardgame.bo.GameObject;
+import com.boardgame.bo.GameObjectWithTraits;
 
-public class Board extends GameObject {
+public class Board extends GameObjectWithTraits {
 	protected Map<Integer, Level> levels = new HashMap<>();
 	
 	protected Map<String, Token> tokens = new HashMap<>();

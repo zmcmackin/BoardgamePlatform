@@ -1,11 +1,14 @@
 package com.boardgame.service.script;
 
+import com.boardgame.service.board.BoardService;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +16,18 @@ import java.util.Set;
 @Service
 public class ScriptService {
 
+    @Autowired
+    protected BoardService boardService;
+
+
     public void runScript(String script, Map<String, Object> args) throws IOException {
+
+        if(args == null){
+            args = new HashMap<>();
+        }
+
+        args.put("boardService", boardService);
+
         IOException _e = null;
         // Create and enter a Context. A Context stores information about the execution environment of a script.
         Context cx = Context.enter();

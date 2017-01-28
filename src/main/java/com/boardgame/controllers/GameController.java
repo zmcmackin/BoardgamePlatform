@@ -1,14 +1,13 @@
 package com.boardgame.controllers;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.ws.rs.BadRequestException;
 
+import com.boardgame.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.boardgame.dao.GameRepository;
 import com.boardgame.dao.UserRepository;
@@ -18,15 +17,19 @@ import com.boardgame.dto.User;
 @RestController
 public class GameController {
 
-	@Autowired private GameRepository gameRepo;
-	@Autowired private UserRepository userRepo;
+	@Autowired
+	protected GameService gameService;
+
 
 	@RequestMapping("/game/{name}/create")
-	public @ResponseBody Game createGame(@PathVariable("name") String name){
-		if(gameRepo.findByName(name) != null)
-			throw new BadRequestException(String.format("Game name '%s' already exist.", name));
-		return gameRepo.save(new Game(name));
+	public @ResponseBody
+	Game createGame(@PathVariable("name") String name, @RequestBody Map<String, Object> rules){
+		return gameService.createGame(name, rules);
 	}
+
+	//TODO REFACTOR TO SERVICE
+	@Autowired private GameRepository gameRepo;
+	@Autowired private UserRepository userRepo;
 
 	@RequestMapping("/game/{name}")
 	public @ResponseBody Game getGame(@PathVariable("name") String name){
